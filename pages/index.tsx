@@ -3,6 +3,19 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  interface Point {
+    x: number;
+    y: number;
+  }
+
+
+  function logPoint(p: Point) {
+    console.log(`${p.x}, ${p.y}`);
+  }
+
+  // logs "12, 26"
+  const point = { x: 12, y: 26 };
+  logPoint(point);
   return (
     <div className={styles.container}>
       <Head>

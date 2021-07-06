@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-types": "tsc --pretty --noEmit",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "test-all": "npm run check-lint && npm run check-types && npm run build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "11.0.1",
@@ -17,6 +21,8 @@
     "@types/react": "17.0.13",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
+    "husky": "^7.0.0",
+    "prettier": "^2.3.2",
     "typescript": "4.3.5"
   }
 }
