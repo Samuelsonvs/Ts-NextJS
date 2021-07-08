@@ -20,9 +20,8 @@ export default function types() {
 
   //optional property
 
-  const objType: SubmitHandler<Inputs> = ({entry}) => {
+  const objType: SubmitHandler<Inputs> = ({ entry }) => {
     if (entry !== undefined) {
-
       // OK
       console.log(entry.toUpperCase());
     }
@@ -31,12 +30,10 @@ export default function types() {
     console.log(entry?.toUpperCase());
   };
 
-  
-
   // union types
-  const unionType: SubmitHandler<Inputs> = ({union}) => {
-    console.log("Your ID is: " +  union);
-    console.log(watch("union"))
+  const unionType: SubmitHandler<Inputs> = ({ union }) => {
+    console.log("Your ID is: " + union);
+    console.log(watch("union"));
   };
   // OK
   //unionType(101);
@@ -45,17 +42,15 @@ export default function types() {
   // Error
   //printId({ myID: 22342 });
 
-  const aliasesType: SubmitHandler<Inputs> = ({x}) => {
-    console.log("The coordinate's x value is " + x *2 );
-    console.log(watch("x"))
-  }
+  const aliasesType: SubmitHandler<Inputs> = ({ x }) => {
+    console.log("The coordinate's x value is " + x * 2);
+    console.log(watch("x"));
+  };
 
-
-  let x: "hello" = "hello"
+  let x: "hello" = "hello";
 
   //Type '"howdy"' is not assignable to type '"hello"'
   //x = "howdy";
-
 
   return (
     <div>

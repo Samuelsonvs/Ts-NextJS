@@ -1,9 +1,5 @@
 import React, { FormEventHandler } from "react";
-import {
-  UseFormRegisterReturn,
-} from "react-hook-form";
-
-
+import { UseFormRegisterReturn } from "react-hook-form";
 
 export default function TypeExamples(prop: {
   handleSubmit: FormEventHandler;
