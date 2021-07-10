@@ -125,6 +125,11 @@ export default function Morefunctions() {
     console.log(n.toFixed(3)); // 1 argument
   }
 
+  function c(n: number) {
+    console.log(n.toFixed()); // 0 arguments
+    console.log(n.toFixed(3)); // 1 argument
+  }
+
   // Optional Parameters
 
   return (
