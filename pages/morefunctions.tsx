@@ -119,6 +119,14 @@ export default function Morefunctions() {
   console.log(p);
   // Generic Functions
 
+  // Optional Parameters
+  function f(n: number) {
+    console.log(n.toFixed()); // 0 arguments
+    console.log(n.toFixed(3)); // 1 argument
+  }
+
+  // Optional Parameters
+
   return (
     <div>
       <h2>TypeScript official more on functions pages notes</h2>
