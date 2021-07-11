@@ -121,17 +121,107 @@ export default function Morefunctions() {
 
   // Optional Parameters
   function f(n: number) {
+    // f(n?: number)
     console.log(n.toFixed()); // 0 arguments
     console.log(n.toFixed(3)); // 1 argument
   }
 
-  function c(n: number) {
-    console.log(n.toFixed()); // 0 arguments
-    console.log(n.toFixed(3)); // 1 argument
+  console.log(f(5));
+
+  // Once you’ve learned about optional parameters and function type expressions,
+  // it’s very easy to make the following mistakes when writing functions that invoke callbacks:
+  function myForEach(arr: any[], callback: (arg: any, index?: number) => void) {
+    for (let i = 0; i < arr.length; i++) {
+      callback(arr[i], i);
+    }
   }
 
+  myForEach([1, 2, 3], (a) => console.log(a));
+  myForEach([1, 2, 3], (a, i) => console.log(a, i));
   // Optional Parameters
 
+  // Function Overloads
+  function makeDate(timestamp: number): Date;
+  function makeDate(m: number, d: number, y: number): Date;
+  function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
+    if (d !== undefined && y !== undefined) {
+      return new Date(y, mOrTimestamp, d);
+    } else {
+      return new Date(mOrTimestamp);
+    }
+  }
+  const d1 = makeDate(12345678);
+  const d2 = makeDate(5, 5, 5);
+  // const d3 = makeDate(1, 3); error for two parameters
+
+  function ss(x: string): string;
+  // function ss(x: number): boolean;  must be return string
+  function ss(x: string | number) {
+    return "oops";
+  }
+  // Function Overloads
+
+  // Other Types to Know About
+  function safeParse(s: string): unknown {
+    return JSON.parse(s);
+  }
+
+  // Need to be careful with 'obj'!
+  const obj = safeParse('"someRandomString"');
+  console.log(obj);
+
+  // Some functions never return a value:
+
+  function fail(msg: string): never {
+    throw new Error(msg);
+  }
+
+  function fng(x: string | number) {
+    if (typeof x === "string") {
+      // do something
+    } else if (typeof x === "number") {
+      // do something else
+    } else {
+      x; // has type 'never'!
+    }
+  }
+  // Other Types to Know About
+
+  // Rest Parameters and Arguments
+
+  function multiply(n: number, ...m: number[]) {
+    return m.map((x) => n * x);
+  }
+
+  const a = multiply(10, 1, 2, 3, 4);
+  console.log(a);
+
+  const args = [8, 5] as const; // 'as const' fixed immutable
+  const angle = Math.atan2(...args);
+  console.log(angle);
+  // Rest Parameters and Arguments
+
+  // Parameter Destructuring
+  function sum({ a, b, c }: { a: number; b: number; c: number }) {
+    console.log(a + b + c);
+  }
+
+  // same above example
+  type ABC = { a: number; b: number; c: number };
+  function sum1({ a, b, c }: ABC) {
+    console.log(a + b + c);
+  }
+  // Parameter Destructuring
+
+  // Assignability of Functions
+  type voidFunc = (x: number) => void;
+
+  const f11: voidFunc = (x: number) => {
+    return x;
+  };
+
+  console.log(f11(5));
+  // Assignability of Functions
   return (
     <div>
       <h2>TypeScript official more on functions pages notes</h2>
