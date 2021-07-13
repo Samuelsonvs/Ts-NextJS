@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function typemanipulation() {
+export default function generics() {
   // Hello World of Generics
   function identity<Type>(arg: Type): Type {
     return arg;
@@ -105,7 +105,7 @@ export default function typemanipulation() {
   // Using Class Types in Generics
   return (
     <div>
-      <h2>TypeScript official type manipulation pages notes</h2>
+      <h2>TypeScript official generics pages notes</h2>
     </div>
   );
 }
