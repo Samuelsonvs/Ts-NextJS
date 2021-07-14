@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "strictPropertyInitialization": false, // setting controls whether class fields need to be initialized in the constructor.
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
