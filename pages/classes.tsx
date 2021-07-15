@@ -268,6 +268,21 @@ export default function classes() {
     // }
   }
   // *** Cross-hierarchy protected access ***
+
+  // *** Cross-instance private access ***
+  class A3 {
+    private x = 10;
+
+    public sameAs(other: A3) {
+      // No error
+      return other.x === this.x;
+    }
+  }
+
+  const bh = new A3();
+  const ft = new A3();
+  console.log(bh.sameAs(ft));
+  // *** Cross-instance private access ***
   // Member Visibility
 
   return (
