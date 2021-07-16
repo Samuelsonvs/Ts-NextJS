@@ -283,6 +283,168 @@ export default function classes() {
   const ft = new A3();
   console.log(bh.sameAs(ft));
   // *** Cross-instance private access ***
+
+  // Static Members
+  class MyClass {
+    static x = 0;
+    static printX() {
+      console.log(MyClass.x);
+    }
+  }
+
+  //const ghz =new MyClass()
+  //ghz.x  // can't access static member 
+  console.log(MyClass.x);
+  MyClass.printX();
+
+  // static member inherited
+  class Base11 {
+    static getGreeting() {
+      return "Hello world";
+    }
+  }
+  class Derived11 extends Base11 {
+    myGreeting = Derived11.getGreeting();
+  }
+  // Static Members
+
+  // Generic Classes
+  class Box<Type> {
+    contents: Type;
+    constructor(value: Type) {
+      this.contents = value;
+    }
+  }
+  
+  const b = new Box("hello!");
+  console.log(b.contents)
+  // Generic Classes
+
+  //this at Runtime in Classes
+  class MyClass12 {
+    name = "MyClass";
+    getName() {
+      return this.name;
+    }
+  }
+  const cf = new MyClass12();
+  const obj = {
+    name: "obj",
+    getName: cf.getName,
+  };
+  
+  // Prints "obj", not "MyClass"
+  console.log(obj.getName());  // the value of 'this' inside a function depends on how the function was called.
+  // *** Arrow Functions ***
+  class MyClass13 {
+    name = "MyClass";
+    getName = () => {
+      return this.name;
+    };
+  }
+  const c13 = new MyClass13();
+  const g13 = c13.getName;
+  // Prints "MyClass" instead of crashing
+  console.log(g13());
+
+  // used this in getName for memory save 
+  class MyClass15 {
+    name = "MyClass";
+    getName(this: MyClass15) {
+      return this.name;
+    }
+  }
+  const c22 = new MyClass15();
+  // OK
+  c22.getName();
+  
+  // Error, would crash
+  const g22 = c22.getName;
+  // console.log(g22()); // crash
+  // *** Arrow Functions ***
+  // *** this Types ***
+  class Box14 {
+    contents: string = "";
+    set(value: string) {
+      this.contents = value;
+      return this;
+    }
+  }
+  class ClearableBox extends Box14 {
+    clear() {
+      this.contents = "";
+    }
+  }
+  
+  const a5 = new ClearableBox();
+  const b5 = a5.set("hello");
+  
+  console.log(b5.contents)
+  b5.clear()
+  console.log(b5.contents)
+  // *** this Types ***
+  //this at Runtime in Classes
+
+  // Parameter Properties
+  class Params {
+    constructor(
+      public readonly x: number,
+      protected y: number,
+      private z: number
+    ) {
+      // No body necessary
+    }
+  }
+  const a = new Params(1, 2, 3);
+
+  console.log(a.x) // only access x because of y and z parameters
+  // Parameter Properties
+
+  //Class Expressions
+  const someClass = class<Type> {
+    content: Type;
+    constructor(value: Type) {
+      this.content = value;
+    }
+  };
+  
+  const m = new someClass("Hello, world");
+  console.log(m.content)
+  //Class Expressions
+
+  // Relationships Between Classes
+  class Point12 {
+    x = 0;
+    y = 0;
+  }
+  
+  class Point22 {
+    x = 5;
+    y = 10;
+  }
+  
+  // OK
+  const p: Point12 = new Point22();
+  console.log(p.x)
+
+  class Person22 {
+    name: string;
+    age: number;
+  }
+  
+  class Employee22 {
+    name: string;
+    age: number;
+    salary: number;
+  }
+  
+  // OK
+  const p22: Person22 = new Employee22();
+
+  p22.name = 'samuel'
+
+  console.log(p22.name)
+  // Relationships Between Classes
   // Member Visibility
 
   return (

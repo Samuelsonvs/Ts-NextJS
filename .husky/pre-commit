@@ -1,7 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling, testing and building your project before committing'
+echo '🏗️👷 Styling, testing, formatting and building your project before committing'
+
+#Code formating
+npm run format ||
+( 
+        echo 'Not formatted.Im so sory for this 😤😤'
+        false;
+)
 
 # Check ESLint Standards
 npm run check-lint ||
