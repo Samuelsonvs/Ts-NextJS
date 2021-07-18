@@ -293,7 +293,7 @@ export default function classes() {
   }
 
   //const ghz =new MyClass()
-  //ghz.x  // can't access static member 
+  //ghz.x  // can't access static member
   console.log(MyClass.x);
   MyClass.printX();
 
@@ -315,9 +315,9 @@ export default function classes() {
       this.contents = value;
     }
   }
-  
+
   const b = new Box("hello!");
-  console.log(b.contents)
+  console.log(b.contents);
   // Generic Classes
 
   //this at Runtime in Classes
@@ -332,9 +332,9 @@ export default function classes() {
     name: "obj",
     getName: cf.getName,
   };
-  
+
   // Prints "obj", not "MyClass"
-  console.log(obj.getName());  // the value of 'this' inside a function depends on how the function was called.
+  console.log(obj.getName()); // the value of 'this' inside a function depends on how the function was called.
   // *** Arrow Functions ***
   class MyClass13 {
     name = "MyClass";
@@ -347,7 +347,7 @@ export default function classes() {
   // Prints "MyClass" instead of crashing
   console.log(g13());
 
-  // used this in getName for memory save 
+  // used this in getName for memory save
   class MyClass15 {
     name = "MyClass";
     getName(this: MyClass15) {
@@ -357,7 +357,7 @@ export default function classes() {
   const c22 = new MyClass15();
   // OK
   c22.getName();
-  
+
   // Error, would crash
   const g22 = c22.getName;
   // console.log(g22()); // crash
@@ -375,13 +375,13 @@ export default function classes() {
       this.contents = "";
     }
   }
-  
+
   const a5 = new ClearableBox();
   const b5 = a5.set("hello");
-  
-  console.log(b5.contents)
-  b5.clear()
-  console.log(b5.contents)
+
+  console.log(b5.contents);
+  b5.clear();
+  console.log(b5.contents);
   // *** this Types ***
   //this at Runtime in Classes
 
@@ -397,7 +397,7 @@ export default function classes() {
   }
   const a = new Params(1, 2, 3);
 
-  console.log(a.x) // only access x because of y and z parameters
+  console.log(a.x); // only access x because of y and z parameters
   // Parameter Properties
 
   //Class Expressions
@@ -407,9 +407,9 @@ export default function classes() {
       this.content = value;
     }
   };
-  
+
   const m = new someClass("Hello, world");
-  console.log(m.content)
+  console.log(m.content);
   //Class Expressions
 
   // Relationships Between Classes
@@ -417,33 +417,33 @@ export default function classes() {
     x = 0;
     y = 0;
   }
-  
+
   class Point22 {
     x = 5;
     y = 10;
   }
-  
+
   // OK
   const p: Point12 = new Point22();
-  console.log(p.x)
+  console.log(p.x);
 
   class Person22 {
     name: string;
     age: number;
   }
-  
+
   class Employee22 {
     name: string;
     age: number;
     salary: number;
   }
-  
+
   // OK
   const p22: Person22 = new Employee22();
 
-  p22.name = 'samuel'
+  p22.name = "samuel";
 
-  console.log(p22.name)
+  console.log(p22.name);
   // Relationships Between Classes
   // Member Visibility
 
